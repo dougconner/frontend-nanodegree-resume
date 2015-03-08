@@ -6,28 +6,27 @@
 // $("#main").append(funThoughts);
 //console.log(funThoughts);
 
-var formattedName = HTMLheaderName.replace("%data%", "Doug Conner");
-var formattedRole = HTMLheaderRole.replace("%data%", "web Developer");
+var bio = {
+	"name" : "Doug Conner",
+	"role" : "Web Developer",
+	"contact" : "dconner@connerbase.com",
+	"picture" : "images/me.jpg",
+	"welcomeMsg" : "Hi",
+	"skills" : "skills"
+};
+
+var formattedName = HTMLheaderName.replace("%data%", bio.name);
+var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+var formattedContact = HTMLcontactGeneric.replace("%data%", bio.contact, "%contact%");
+//formattedContact = HTMLcontactGeneric.replace("%contact%", bio.contact);
+var formattedPicture = HTMLbioPic.replace("%data%", bio.picture);
+var formattedWelcomMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMsg);
+var formattedSkills =  HTMLskills.replace("%data%", bio.skills);
 
 $("#header").append(formattedName);
 $("#header").append(formattedRole);
+$("#header").append(formattedContact);
+$("#header").append(formattedPicture);
+$("#header").append(formattedWelcomMsg);
+$("#header").append(formattedSkills);
 
-var name = "AlbERt EINstEiN";
-
-function nameChanger(oldName) {
-    var finalName = oldName;
-    // Your code goes here!
-    var nameString = finalName.split(" ");
-    nameString[0] = nameString[0].toLowerCase();
-    var firstLetter = nameString[0][0].toUpperCase();
-    nameString[0] = nameString[0].slice(1);
-    nameString[1] = nameString[1].toUpperCase();
-    finalName = firstLetter + nameString[0] + " " + nameString[1];
-
-
-    // Don't delete this line!
-    return finalName;
-};
-
-// Did your code work? The line below will tell you!
-console.log(nameChanger(name));
