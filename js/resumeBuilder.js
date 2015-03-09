@@ -50,7 +50,7 @@ work.city = "Atascadero";
 
 var formattedWorkPosition = HTMLworkTitle.replace("%data%", work["position"]);
 
-$("#header").append(formattedWorkPosition);
+$("#main").append(formattedWorkPosition);
 
 var education = {};
 education["school"] = "Udacity";
@@ -59,5 +59,23 @@ education["city"] = "online";
 
 var formattedSchoolName = HTMLschoolName.replace("%data%", education.school);
 
-$("#header").append(formattedSchoolName);
+$("#main").append(formattedSchoolName);
+
+var education = {
+	"schools": [
+		{
+			"name": "Harvey Mudd College",
+			"city": "Claremont, CA, US",
+			"degree": "BS",
+			"major": "engineering"
+		},
+		{
+			"name": "Udacity",
+			"city": "online",
+			"degree": "nano-degree",
+			"major": "Front-end Web Developer"
+		}
+	]
+}
+
 
