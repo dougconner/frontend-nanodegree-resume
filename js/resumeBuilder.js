@@ -1,10 +1,62 @@
-//$("#main").append("Doug Conner");
 
-// [string].replace([old], [new])
-// var awesomeThoughts = "I am Doug and I am AWESOME!";
-// var funThoughts = awesomeThoughts.replace("AWESOME", "FUN");
-// $("#main").append(funThoughts);
-//console.log(funThoughts);
+// work object
+
+var work = {
+	[
+	  {
+	    "employer":"Self - employed",
+	    "title":"technical writing",
+	    "location":"Atascadero, CA",
+	    "dates":"1997 - present",
+	    "description":"Tecnical writing for electronics companies appearing in magazines and websites. "
+	  },
+	  {
+	    "employer":"Actel",
+	    "title":"Senior Engineer",
+	    "location":"Mountain View, CA",
+	    "dates":"1996-1997",
+	    "description":"Designing FPGAs for communications applications using VHDL for application notes. projects. "
+	  },
+	  {
+	    "employer":"EDN Magazine",
+	    "title":"Technical editor",
+	    "location":"Newton, MA",
+	    "dates":"1987-1996",
+	    "description":"Covered programmable logic and EDA tool in application-oriented articles. "
+	  },
+	  {
+	    "employer":"Teradyne",
+	    "title":"Electronics Engineer",
+	    "location":"Agoura Hills, CA",
+	    "dates":"1983-1987",
+	    "description":"Responsible for dc-parametric section of chip tester. Designed analog and digital circuit. "
+	  },
+	  {
+	    "employer":"Northrop (now Northrop-Grumman)",
+	    "title":"Senior Engineer, engineering analysis group",
+	    "location":"Newbury Park, CA",
+	    "dates":"1979-1983",
+	    "description":"Wrote computer programs to evaluate rocket launch dynamics and aerodynamic performance. Secret clearance. "
+	  },
+	  {
+	    "employer":"Conner Construction",
+	    "title":"Building Contractor",
+	    "location":"Topanga, CA",
+	    "dates":"1978-1979",
+	    "description":"Helped my father in his construction business. Obtained my general building contractors license. "
+	  },
+	  {
+	    "employer":"Northrop (now Northrop-Grumman)",
+	    "title":"Engineer",
+	    "location":"Anaheim, CA",
+	    "dates":"1976-1978",
+	    "description":"Wrote computer programs to simulate the dynamics of gyro-stabilized platforms. Missile-performance analysis. Secret Clearance."
+	  }
+	]
+}
+
+// bio object
+
 
 var bio = {
 	"name" : "Doug Conner",
@@ -17,65 +69,49 @@ var bio = {
 	},
 	"welcomeMsg" : "Hi",
 	"skills" : [
-		"problem solver", " make it work"
+		"Strong science/engineering background", " problem solver", " make it work"
 	],
 	"picture" : "images/me.jpg"
 };
 
 
-var formattedName = HTMLheaderName.replace("%data%", bio.name);
-var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-var formattedContactGeneric = HTMLcontactGeneric.replace("%contact%", "contact information");
-var formattedContactGeneric2 = formattedContactGeneric.replace("%data%", ":");
-var formattedMobile = HTMLmobile.replace("%data%", bio.contact.mobile);
-var formattedEmail = HTMLemail.replace("%data%", bio.contact.email);
-var formattedPicture = HTMLbioPic.replace("%data%", bio.picture);
-var formattedWelcomMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMsg);
-var formattedSkills =  HTMLskills.replace("%data%", bio.skills);
 
-$("#header").append(formattedName);
-$("#header").append(formattedRole);
-$("#header").append(formattedContactGeneric2);
-$("#header").append(formattedMobile);
-$("#header").append(formattedEmail);
-$("#header").append(formattedPicture);
-$("#header").append(formattedWelcomMsg);
-$("#header").append(formattedSkills);
-
-var work = {};
-work.position = "engineer";
-work.employer = "conner engineering";
-work.yearsWorked = "5";
-work.city = "Atascadero";
-
-var formattedWorkPosition = HTMLworkTitle.replace("%data%", work["position"]);
-
-$("#main").append(formattedWorkPosition);
-
-var education = {};
-education["school"] = "Udacity";
-education["yearsAttended"] = "1";
-education["city"] = "online";
-
-var formattedSchoolName = HTMLschoolName.replace("%data%", education.school);
-
-$("#main").append(formattedSchoolName);
-
+// Education object, JSON example
 var education = {
 	"schools": [
 		{
 			"name": "Harvey Mudd College",
 			"city": "Claremont, CA, US",
 			"degree": "BS",
-			"major": "engineering"
-		},
-		{
-			"name": "Udacity",
-			"city": "online",
-			"degree": "nano-degree",
-			"major": "Front-end Web Developer"
+			"major": "Engineering",
+			"dates": "1972-1976"
+			"url": "https://www.hmc.edu/"
 		}
+
+	"onlineCourses": [
+	  {
+	    "title":"Artificial inteligence for robotics",
+	    "school":"Udacity",
+	    "dates":"2012",
+	    "url":"https://www.udacity.com/course/cs373"
+	  },
+	  {
+	    "title":"Intro to HTML and CSS",
+	    "school":"Udacity",
+	    "dates":"Feb 2015",
+	    "url":"https://www.udacity.com/course/ud304"
+	  },
+	  {
+	    "title":"JavaScript basics",
+	    "school":"Udacity",
+	    "dates":"Mar 2015",
+	    "url":"https://www.udacity.com/course/ud804"
+	  },
+	  {
+	    "title":"How to use Git and GitHub",
+	    "school":"Udacity",
+	    "dates":"Mar 2015",
+	    "url":"https://www.udacity.com/course/ud775"
+	  }
 	]
 }
-
-
