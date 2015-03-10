@@ -2,7 +2,7 @@
 // work object
 
 var work = {
-	[
+	"jobs": [
 	  {
 	    "employer":"Self - employed",
 	    "title":"technical writing",
@@ -55,6 +55,23 @@ var work = {
 	]
 }
 
+// projects
+
+var work = {
+	"projects": [
+	  {
+	    "title":"Portfolio site",
+	    "dates":"3/1/2015",
+	    "description":"Creating a web page using HTML, CSS, and Bootstrap to match a PDF mockup.",
+	    "images": [
+		    {
+		    	"url": ""
+		    }
+	    ]
+	  }
+	]
+}
+
 // bio object
 
 
@@ -72,7 +89,7 @@ var bio = {
 		"Strong science/engineering background", " problem solver", " make it work"
 	],
 	"picture" : "images/me.jpg"
-};
+}
 
 
 
@@ -84,9 +101,10 @@ var education = {
 			"city": "Claremont, CA, US",
 			"degree": "BS",
 			"major": "Engineering",
-			"dates": "1972-1976"
+			"dates": "1972-1976",
 			"url": "https://www.hmc.edu/"
 		}
+	],
 
 	"onlineCourses": [
 	  {
