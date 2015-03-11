@@ -5,7 +5,7 @@ var work = {
 	"jobs": [
 	  {
 	    "employer":"Self - employed",
-	    "title":"technical writing",
+	    "title":"Technical writing",
 	    "location":"Atascadero, CA",
 	    "dates":"1997 - present",
 	    "description":"Tecnical writing for electronics companies appearing in magazines and websites. "
@@ -52,12 +52,7 @@ var work = {
 	    "dates":"1976-1978",
 	    "description":"Wrote computer programs to simulate the dynamics of gyro-stabilized platforms. Missile-performance analysis. Secret Clearance."
 	  }
-	]
-}
-
-// projects
-
-var work = {
+	],
 	"projects": [
 	  {
 	    "title":"Portfolio site",
@@ -134,14 +129,22 @@ var education = {
 	]
 }
 
-    if (bio.skills.length > 0) {
-      $("#header").append(HTMLskillsStart);
+if (bio.skills.length > 0) {
+  $("#header").append(HTMLskillsStart);
 
-      for(var i = 0; i < bio.skills.length; i++) {
-	      var formattedSkill = HTMLskills.replace("%data%", bio.skills[i]);
-	      $("#skills").append(formattedSkill);
-	      console.log(i);
-	  }
-    }
+  for(var i = 0; i < bio.skills.length; i++) {
+      var formattedSkill = HTMLskills.replace("%data%", bio.skills[i]);
+      $("#skills").append(formattedSkill);
+  }
+}
 
+for (job in work.jobs) {
+	$("#header").append(HTMLworkStart);
+	var formattedWorkEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+	$("#workExperience").append(formattedWorkEmployer);
+	var formattedWorkTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+	$("#workExperience").append(formattedWorkTitle);
+
+	$(".work-entry:last").append((work.jobs[job].employer) + (work.jobs[job].title));
+}
 
