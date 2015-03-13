@@ -161,6 +161,8 @@ function displayWork() {
 displayWork();
 
 $(document).click(function(loc) {
-	var ex = loc.pageX;
-	console.log("X: " + ex, "  Y: " + loc.clientY);
+	var x = loc.pageX;
+	var y = loc.pageY;
+
+	logClicks(x, y);
 });
