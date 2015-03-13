@@ -139,7 +139,7 @@ if (bio.skills.length > 0) {
 }
 
 function displayWork() {
-	for (job in work.jobs) {
+	for (var job in work.jobs) {
 		$("#workExperience").append(HTMLworkStart);
 
 		var formattedWorkEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
@@ -166,3 +166,17 @@ $(document).click(function(loc) {
 
 	logClicks(x, y);
 });
+
+function locationizer(work_obj) {
+	var locArray = [];
+    for (var job in work_obj.jobs) {
+    	var loc = work_obj.jobs[job].location;
+    	if (locArray.indexOf(loc) === -1) {
+	    	locArray.push(loc);
+    	}
+    }
+    return locArray;
+};
+
+// Did locationizer() work? This line will tell you!
+console.log(locationizer(work));
