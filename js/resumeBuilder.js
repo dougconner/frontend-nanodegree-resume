@@ -176,7 +176,16 @@ function locationizer(work_obj) {
     	}
     }
     return locArray;
-};
+}
 
-// Did locationizer() work? This line will tell you!
-console.log(locationizer(work));
+$("#main").append(internationalizeButton);
+function inName(nameIn) {
+	var nameArray = nameIn.trim().split(" ");
+	nameArray[1] = nameArray[1].toUpperCase();
+	nameArray[0] = nameArray[0].slice(0,1).toUpperCase() +
+		nameArray[0].slice(1).toLowerCase();
+	return nameArray.join(" ");
+}
+
+console.log(inName(" douG conner"));
+
