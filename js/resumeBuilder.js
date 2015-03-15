@@ -52,19 +52,53 @@ var work = {
 	    "dates":"1976-1978",
 	    "description":"Wrote computer programs to simulate the dynamics of gyro-stabilized platforms. Missile-performance analysis. Secret Clearance."
 	  }
-	],
+	]
+}
+
+var projects = {
+
 	"projects": [
 	  {
-	    "title":"Portfolio site",
+	    "title":"Project 1",
 	    "dates":"3/1/2015",
 	    "description":"Creating a web page using HTML, CSS, and Bootstrap to match a PDF mockup.",
-	    "images": [
-		    {
-		    	"url": ""
-		    }
-	    ]
+	    "image":"https://placekitten.com/200/200"
+	  },
+	  {
+	    "title":"project a",
+	    "dates":"3/15/2015",
+	    "description":"This is a placeholder for dev",
+	    "image":"https://placekitten.com/200/201"
+	  },
+	  {
+	    "title":"project b",
+	    "dates":"3/16/2015",
+	    "description":"Another placeholder for dev",
+	    "image":"https://placekitten.com/200/202"
 	  }
-	]
+	],
+	"display": function display() {
+		//display code
+		console.log("display ran");
+		for (var i = 0; i < projects.projects.length; i++)  {
+			$("#projects").append(HTMLprojectStart);
+			var formattedProjectTitle = HTMLprojectTitle.replace(
+				"%data%", projects.projects[i].title);
+			$(".project-entry:last").append(formattedProjectTitle);
+			var formattedProjectDates = HTMLprojectDates.replace(
+				"%data%", projects.projects[i].dates);
+			$(".project-entry:last").append(formattedProjectDates);
+			var formattedProjectDescription = HTMLprojectDescription.replace(
+				"%data%", projects.projects[i].description);
+			$(".project-entry:last").append(formattedProjectDescription);
+			var formattedProjectImage = HTMLprojectImage.replace("%data%",
+				projects.projects[i].image);
+			$(".project-entry:last").append(formattedProjectImage);
+		}
+
+	}
+
+
 }
 
 // bio object
@@ -85,7 +119,6 @@ var bio = {
 	],
 	"picture" : "images/me.jpg"
 }
-
 
 
 // Education object, JSON example
@@ -177,7 +210,7 @@ function locationizer(work_obj) {
     }
     return locArray;
 }
-
+/*
 $("#main").append(internationalizeButton);
 function inName(nameIn) {
 	var nameArray = nameIn.trim().split(" ");
@@ -188,4 +221,7 @@ function inName(nameIn) {
 }
 
 console.log(inName(" douG conner"));
+*/
+
+projects.display(); // runs display function in projects
 
