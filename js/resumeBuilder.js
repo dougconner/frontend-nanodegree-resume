@@ -62,19 +62,26 @@ var projects = {
 	    "title":"Project 1",
 	    "dates":"3/1/2015",
 	    "description":"Creating a web page using HTML, CSS, and Bootstrap to match a PDF mockup.",
-	    "image":"https://placekitten.com/200/200"
+	    "images": [
+	    	"https://placekitten.com/200/200"
+	    ]
 	  },
 	  {
 	    "title":"project a",
 	    "dates":"3/15/2015",
 	    "description":"This is a placeholder for dev",
-	    "image":"https://placekitten.com/200/201"
+	    "images": [
+	    	"https://placekitten.com/200/201",
+	    	"https://placekitten.com/200/200"
+	    ]
 	  },
 	  {
 	    "title":"project b",
 	    "dates":"3/16/2015",
 	    "description":"Another placeholder for dev",
-	    "image":"https://placekitten.com/200/202"
+	    "images": [
+	    	"https://placekitten.com/200/202"
+	    ]
 	  }
 	],
 	"display": function display() {
@@ -91,13 +98,17 @@ var projects = {
 			var formattedProjectDescription = HTMLprojectDescription.replace(
 				"%data%", projects.projects[i].description);
 			$(".project-entry:last").append(formattedProjectDescription);
-			var formattedProjectImage = HTMLprojectImage.replace("%data%",
-				projects.projects[i].image);
-			$(".project-entry:last").append(formattedProjectImage);
+			// need to add code to test for number of images and load all
+			if (projects.projects[i].images.length > 0) {
+				for(image in projects.projects[i].images) {
+					var formattedProjectImage = HTMLprojectImage.replace("%data%",
+						projects.projects[i].images);
+					$(".project-entry:last").append(formattedProjectImage);
+				}
+			}
 		}
 
 	}
-
 
 }
 
