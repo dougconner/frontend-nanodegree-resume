@@ -1,5 +1,5 @@
 
-// work object
+// work history
 
 var work = {
 	"jobs": [
@@ -52,8 +52,30 @@ var work = {
 	    "dates":"1976-1978",
 	    "description":"Wrote computer programs to simulate the dynamics of gyro-stabilized platforms. Missile-performance analysis. Secret Clearance."
 	  }
-	]
+	],
+	"display": function display() {
+		for (var job in work.jobs) {
+			$("#workExperience").append(HTMLworkStart);
+
+			var formattedWorkEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+			var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+			var formattedEmployerTitle = formattedWorkEmployer + formattedTitle;
+
+			$(".work-entry:last").append(formattedEmployerTitle);
+
+			var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
+			var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+			var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+
+			$(".work-entry:last").append(formattedLocation);
+			$(".work-entry:last").append(formattedDates);
+			$(".work-entry:last").append(formattedDescription);
+		}
+	}
+
 }
+
+// projects to display my skills and knowledge
 
 var projects = {
 
@@ -110,8 +132,7 @@ var projects = {
 
 }
 
-// bio object
-
+// contact information
 
 var bio = {
 	"name" : "Doug Conner",
@@ -126,11 +147,21 @@ var bio = {
 	"skills" : [
 		"Strong science/engineering background", " problem solver", " make it work"
 	],
-	"picture" : "images/me.jpg"
+	"picture" : "images/me.jpg",
+	"display": function displaySkills() {
+		if (bio.skills.length > 0) {
+		  $("#header").append(HTMLskillsStart);
+
+		  for(var i = 0; i < bio.skills.length; i++) {
+		      var formattedSkill = HTMLskills.replace("%data%", bio.skills[i]);
+		      $("#skills").append(formattedSkill);
+		  }
+		}
+	}
 }
 
 
-// Education object, JSON example
+// Education: school and online
 var education = {
 	"schools": [
 		{
@@ -171,72 +202,11 @@ var education = {
 	]
 }
 
-if (bio.skills.length > 0) {
-  $("#header").append(HTMLskillsStart);
+bio.display();
 
-  for(var i = 0; i < bio.skills.length; i++) {
-      var formattedSkill = HTMLskills.replace("%data%", bio.skills[i]);
-      $("#skills").append(formattedSkill);
-  }
-}
+work.display(); // calls display function in work
 
-function displayWork() {
-	for (var job in work.jobs) {
-		$("#workExperience").append(HTMLworkStart);
-
-		var formattedWorkEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
-		var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
-		var formattedEmployerTitle = formattedWorkEmployer + formattedTitle;
-
-		$(".work-entry:last").append(formattedEmployerTitle);
-
-		var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
-		var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
-		var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
-
-		$(".work-entry:last").append(formattedLocation);
-		$(".work-entry:last").append(formattedDates);
-		$(".work-entry:last").append(formattedDescription);
-	}
-}
-
-displayWork();
-
-$(document).click(function(loc) {
-	var x = loc.pageX;
-	var y = loc.pageY;
-
-//	logClicks(x, y);
-});
-
-function locationizer(work_obj) {
-	var locArray = [];
-    for (var job in work_obj.jobs) {
-    	var loc = work_obj.jobs[job].location;
-    	if (locArray.indexOf(loc) === -1) {
-	    	locArray.push(loc);
-    	}
-    }
-    return locArray;
-}
-/*
-$("#main").append(internationalizeButton);
-function inName(nameIn) {
-	var nameArray = nameIn.trim().split(" ");
-	nameArray[1] = nameArray[1].toUpperCase();
-	nameArray[0] = nameArray[0].slice(0,1).toUpperCase() +
-		nameArray[0].slice(1).toLowerCase();
-	return nameArray.join(" ");
-}
-
-console.log(inName(" douG conner"));
-*/
-
-projects.display(); // runs display function in projects
-
-$(document).click(function(loc) {
-	console.log(loc.pageX, loc.pageY);
-});
+projects.display(); // calls display function in projects
 
 // to see the map
 $("#mapDiv").append(googleMap);
