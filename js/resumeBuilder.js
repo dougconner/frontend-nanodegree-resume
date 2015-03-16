@@ -85,8 +85,6 @@ var projects = {
 	  }
 	],
 	"display": function display() {
-		//display code
-		console.log("display ran");
 		for (var i = 0; i < projects.projects.length; i++)  {
 			$("#projects").append(HTMLprojectStart);
 			var formattedProjectTitle = HTMLprojectTitle.replace(
@@ -118,7 +116,7 @@ var projects = {
 var bio = {
 	"name" : "Doug Conner",
 	"role" : "Web Developer",
-	"contact" : {
+	"contacts" : {
 		"mobile" : "805-440-6737",
 		"email" : "dconner@connerbase.com",
 		"github" : "https://github.com/dougconner/",
@@ -137,7 +135,7 @@ var education = {
 	"schools": [
 		{
 			"name": "Harvey Mudd College",
-			"city": "Claremont, CA, US",
+			"location": "Claremont, CA, US",
 			"degree": "BS",
 			"major": "Engineering",
 			"dates": "1972-1976",
@@ -208,7 +206,7 @@ $(document).click(function(loc) {
 	var x = loc.pageX;
 	var y = loc.pageY;
 
-	logClicks(x, y);
+//	logClicks(x, y);
 });
 
 function locationizer(work_obj) {
@@ -236,3 +234,9 @@ console.log(inName(" douG conner"));
 
 projects.display(); // runs display function in projects
 
+$(document).click(function(loc) {
+	console.log(loc.pageX, loc.pageY);
+});
+
+// to see the map
+$("#mapDiv").append(googleMap);
