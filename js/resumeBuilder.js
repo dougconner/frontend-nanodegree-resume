@@ -85,7 +85,7 @@ var projects = {
 	    "dates":"3/1/2015",
 	    "description":"Creating a web page using HTML, CSS, and Bootstrap to match a PDF mockup.",
 	    "images": [
-	    	"https://placekitten.com/200/200"
+	    	"images/me.jpg"
 	    ]
 	  },
 	  {
@@ -93,8 +93,8 @@ var projects = {
 	    "dates":"3/15/2015",
 	    "description":"This is a placeholder for dev",
 	    "images": [
-	    	"https://placekitten.com/200/201",
-	    	"https://placekitten.com/200/200"
+	    	// "images/me.jpg",
+	    	"images/me.jpg"
 	    ]
 	  },
 	  {
@@ -102,7 +102,7 @@ var projects = {
 	    "dates":"3/16/2015",
 	    "description":"Another placeholder for dev",
 	    "images": [
-	    	"https://placekitten.com/200/202"
+	    	"images/me.jpg"
 	    ]
 	  }
 	],
@@ -143,12 +143,40 @@ var bio = {
 		"github" : "https://github.com/dougconner/",
 		"location" : "Atascadero, CA"
 	},
-	"welcomeMsg" : "Hi",
+	"welcomeMsg" : "Web developer with technical writing and engineering background",
 	"skills" : [
-		"Strong science/engineering background", " problem solver", " make it work"
+		"HTML",
+		"CSS",
+		"JavaScript",
+		"jQuery",
+		"Technical Writing"
 	],
 	"picture" : "images/me.jpg",
+
 	"display": function displaySkills() {
+		var formattedHeaderName = HTMLheaderName.replace("%data%", bio.name);
+		var formattedHeaderRole = HTMLheaderRole.replace("%data%", bio.role);
+
+		$("#header").append(formattedHeaderName);
+		$("#header").append(formattedHeaderRole);
+
+		var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
+		var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
+		var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
+		var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
+
+		// Append topContacts to header here for correct position
+		$("#header").append($("#topContacts").append(formattedMobile));
+		$("#topContacts").append(formattedEmail);
+		$("#topContacts").append(formattedGithub);
+		$("#topContacts").append(formattedLocation);
+
+		var formattedBioPic = HTMLbioPic.replace("%data%", bio.picture);
+		var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMsg);
+		$("#header").append(formattedBioPic);
+		$("#header").append(formattedWelcomeMsg);
+
+
 		if (bio.skills.length > 0) {
 		  $("#header").append(HTMLskillsStart);
 
@@ -158,6 +186,7 @@ var bio = {
 		  }
 		}
 	}
+
 }
 
 
@@ -210,3 +239,7 @@ projects.display(); // calls display function in projects
 
 // to see the map
 $("#mapDiv").append(googleMap);
+
+$(document).click(function(loc) {
+	console.log(loc.pageX, loc.pageY);
+});
