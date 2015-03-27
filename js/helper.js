@@ -64,7 +64,7 @@ The International Name challenge in Lesson 2 where you'll create a function that
 */
 $(document).ready(function() {
   $('button').click(function() {
-    var iName = inName() || function(){};
+    var iName = inName() || function() {};
     $('#name').html(iName);
   });
 });
@@ -86,6 +86,7 @@ function logClicks(x,y) {
 
 $(document).click(function(loc) {
   // your code goes here!
+  console.log(loc.pageX, loc.pageY);
 });
 
 
@@ -112,7 +113,6 @@ function initializeMap() {
   // This next line makes `map` a new Google Map JavaScript Object and attaches it to
   // <div id="map">, which is appended as part of an exercise late in the course.
   map = new google.maps.Map(document.querySelector('#map'), mapOptions);
-
 
   /*
   locationFinder() returns an array of every location string from the JSONs
@@ -164,8 +164,11 @@ function initializeMap() {
     // infoWindows are the little helper windows that open when you click
     // or hover over a pin on a map. They usually contain more information
     // about a location.
+
+    var mapMsg = marker.title + " lat-long " + marker.position;
     var infoWindow = new google.maps.InfoWindow({
-      content: name
+      // content: name
+      content: mapMsg
     });
 
     // hmmmm, I wonder what this is about...
@@ -243,3 +246,4 @@ window.addEventListener('resize', function(e) {
   // Make sure the map bounds get updated on page resize
  map.fitBounds(mapBounds);
 });
+

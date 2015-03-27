@@ -4,49 +4,54 @@
 var work = {
 	"jobs": [
 	  {
-	    "employer":"Self - employed",
+	    "employer":["Self", "http://www.solarheatengines.com/"],
 	    "title":"Technical writing",
 	    "location":"Atascadero, CA",
 	    "dates":"1997 - present",
-	    "description":"Tecnical writing for electronics companies appearing in magazines and websites. "
+	    "description":"Tecnical writing for electronics companies appearing in magazines and websites. Database programming using Microsoft Access. "
 	  },
 	  {
-	    "employer":"Actel",
+	    "employer":["Actel (now Microsemi)", "http://www.microsemi.com/"],
 	    "title":"Senior Engineer",
 	    "location":"Mountain View, CA",
 	    "dates":"1996-1997",
-	    "description":"Designing FPGAs for communications applications using VHDL for application notes. projects. "
+	    "description":"Designing FPGAs for communications applications using VHDL for application notes."
 	  },
 	  {
-	    "employer":"EDN Magazine",
+	    "employer": ["EDN Magazine", "http://www.edn.com/"],
 	    "title":"Technical editor",
 	    "location":"Newton, MA",
 	    "dates":"1987-1996",
-	    "description":"Covered programmable logic and EDA tool in application-oriented articles. "
+	    "description":"Covered programmable logic and EDA tool in application-oriented articles. Performed hands-on projects " +
+	    "projects I regularly learned to use a variety of new design tools and software. Some of the projects included " +
+	     "implementing digital filters with FPGAs, computer-simulated neural networks, and evaluating schematic capture and " +
+	     "pc-board layout software. "
 	  },
 	  {
-	    "employer":"Teradyne",
+	    "employer": ["Teradyne", "http://www.teradyne.com/"],
 	    "title":"Electronics Engineer",
 	    "location":"Agoura Hills, CA",
 	    "dates":"1983-1987",
-	    "description":"Responsible for dc-parametric section of chip tester. Designed analog and digital circuit. "
+	    "description":"Responsible for dc-parametric section of chip tester. Designed precision current sources, precision " +
+	    "voltage and current measurement system. Also digital design with TTL, CMOS, and ECL logic families.  "
 	  },
 	  {
-	    "employer":"Northrop (now Northrop-Grumman)",
+	    "employer": ["Northrop (now Northrop-Grumman)", "http://www.northropgrumman.com/"],
 	    "title":"Senior Engineer, engineering analysis group",
 	    "location":"Newbury Park, CA",
 	    "dates":"1979-1983",
-	    "description":"Wrote computer programs to evaluate rocket launch dynamics and aerodynamic performance. Secret clearance. "
+	    "description":"Wrote computer programs to evaluate rocket launch dynamics and aerodynamic performance. " +
+	    "Worked on softaware requirements document for autonomous unmanned aircraft. Secret clearance.  "
 	  },
 	  {
-	    "employer":"Conner Construction",
+	    "employer": ["Conner Construction", ""],
 	    "title":"Building Contractor",
 	    "location":"Topanga, CA",
 	    "dates":"1978-1979",
-	    "description":"Helped my father in his construction business. Obtained my general building contractors license. "
+	    "description":"Worked with my father in his construction business. Obtained my general building contractors license. "
 	  },
 	  {
-	    "employer":"Northrop (now Northrop-Grumman)",
+	    "employer": ["Northrop (now Northrop-Grumman)", "http://www.northropgrumman.com/"],
 	    "title":"Engineer",
 	    "location":"Anaheim, CA",
 	    "dates":"1976-1978",
@@ -54,11 +59,14 @@ var work = {
 	  }
 	],
 	"display": function display() {
+		// Start work experience - only need to append this once
+		$("#workExperience").append(HTMLworkStart);
 		for (var job in work.jobs) {
-			$("#workExperience").append(HTMLworkStart);
-
-			var formattedWorkEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+			// format employer and url from employer array
+			var formattedWorkEmployer = HTMLworkEmployer.replace('%data%', work.jobs[job].employer[0]);
+			formattedWorkEmployer = formattedWorkEmployer.replace("#", work.jobs[job].employer[1]);
 			var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+			// combine employer and title on one line
 			var formattedEmployerTitle = formattedWorkEmployer + formattedTitle;
 
 			$(".work-entry:last").append(formattedEmployerTitle);
@@ -82,27 +90,30 @@ var projects = {
 	"projects": [
 	  {
 	    "title":"Project 1",
+	    "url": "http://tridev.dougsdiy.com/tridev/project_1/index.html",
 	    "dates":"3/1/2015",
 	    "description":"Creating a web page using HTML, CSS, and Bootstrap to match a PDF mockup.",
 	    "images": [
-	    	"images/me.jpg"
+	    	"http://tridev.dougsdiy.com/tridev/project_images/P1a.png"
 	    ]
 	  },
 	  {
-	    "title":"project a",
-	    "dates":"3/15/2015",
-	    "description":"This is a placeholder for dev",
+	    "title":"Stirling Engine Project",
+	    "url": "http://www.solarheatengines.com/"
+	    "dates":"2011-2013",
+	    "description":"Hobby blog of my Stirling engine projects",
 	    "images": [
-	    	// "images/me.jpg",
-	    	"images/me.jpg"
+	    	"http://tridev.dougsdiy.com/tridev/project_images/dP2a.png",
+	    	"http://tridev.dougsdiy.com/tridev/project_images/dP2b.png"
 	    ]
 	  },
 	  {
-	    "title":"project b",
-	    "dates":"3/16/2015",
-	    "description":"Another placeholder for dev",
+	    "title":"Triathlete group website",
+	    "url": "http://tritest.dougsdiy.com/"
+	    "dates":"2014-2015",
+	    "description":"King-of-the-Mountain mileage tracker",
 	    "images": [
-	    	"images/me.jpg"
+	    	"http://tridev.dougsdiy.com/tridev/project_images/dP3a.png"
 	    ]
 	  }
 	],
@@ -141,6 +152,7 @@ var bio = {
 		"mobile" : "805-440-6737",
 		"email" : "dconner@connerbase.com",
 		"github" : "https://github.com/dougconner/",
+		"twitter" : "dhconner",
 		"location" : "Atascadero, CA"
 	},
 	"welcomeMsg" : "Web developer with technical writing and engineering background",
@@ -151,6 +163,7 @@ var bio = {
 		"jQuery",
 		"Technical Writing"
 	],
+	// biopic: url ?
 	"picture" : "images/me.jpg",
 
 	"display": function displaySkills() {
@@ -160,22 +173,10 @@ var bio = {
 		$("#header").append(formattedHeaderName);
 		$("#header").append(formattedHeaderRole);
 
-		var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
-		var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
-		var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
-		var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
-
-		// Append topContacts to header here for correct position
-		$("#header").append($("#topContacts").append(formattedMobile));
-		$("#topContacts").append(formattedEmail);
-		$("#topContacts").append(formattedGithub);
-		$("#topContacts").append(formattedLocation);
-
 		var formattedBioPic = HTMLbioPic.replace("%data%", bio.picture);
 		var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMsg);
 		$("#header").append(formattedBioPic);
 		$("#header").append(formattedWelcomeMsg);
-
 
 		if (bio.skills.length > 0) {
 		  $("#header").append(HTMLskillsStart);
@@ -185,6 +186,19 @@ var bio = {
 		      $("#skills").append(formattedSkill);
 		  }
 		}
+
+		// footer info
+		var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
+		var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
+		var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
+		var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
+		var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
+
+		$("#footerContacts").append($("#topContacts").append(formattedMobile));
+		$("#topContacts").append(formattedEmail);
+		$("#topContacts").append(formattedGithub);
+		$("#topContacts").append(formattedTwitter);
+		$("#topContacts").append(formattedLocation);
 	}
 
 }
@@ -195,10 +209,10 @@ var education = {
 	"schools": [
 		{
 			"name": "Harvey Mudd College",
-			"location": "Claremont, CA, US",
+			"location": "Claremont, CA",
 			"degree": "BS",
 			"major": "Engineering",
-			"dates": "1972-1976",
+			"dates": "1976",
 			"url": "https://www.hmc.edu/"
 		}
 	],
@@ -227,19 +241,61 @@ var education = {
 	    "school":"Udacity",
 	    "dates":"Mar 2015",
 	    "url":"https://www.udacity.com/course/ud775"
+	  },
+	  {
+	  	"title": "Intro to jQuery",
+	  	"school": "Udacity",
+	  	"dates": "Mar 2015",
+	  	"url": "https://www.udacity.com/course/ud245"
 	  }
-	]
+	],
+	"display": function display() {
+		$("#education").append(HTMLschoolStart);
+		for (var school in education.schools) {
+			// replace school name and url for link
+			var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[school].name);
+			formattedSchoolName = formattedSchoolName.replace("#", education.schools[school].url);
+			var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
+			var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
+			var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
+			var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major);
+
+			// school name and degree are on a single line
+			var formattedSchoolTitle = formattedSchoolName + formattedSchoolDegree;
+
+			$(".education-entry:last").append(formattedSchoolTitle);
+			$(".education-entry:last").append(formattedSchoolLocation);
+			$(".education-entry:last").append(formattedSchoolDates);
+			$(".education-entry:last").append(formattedSchoolMajor);
+
+		}
+		$(".education-entry").append(HTMLonlineClasses);
+		for (var course in education.onlineCourses) {
+			// replace school name and url for link
+			var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[course].title);
+			formattedOnlineTitle = formattedOnlineTitle.replace("#", education.onlineCourses[course].url);
+			var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[course].school);
+			var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[course].dates);
+			// No need to display the URL a second time. Need <br>
+			var formattedOnlineURL = '<br>';
+
+			// school name and degree are on a single line
+			var formattedTitle = formattedOnlineTitle + formattedOnlineSchool;
+
+			$(".education-entry:last").append(formattedTitle);
+			$(".education-entry:last").append(formattedOnlineDates);
+			// This is just for the <br> url in title link
+			$(".education-entry:last").append(formattedOnlineURL);
+		}
+	}
 }
 
+// Call the display functions to load the resume data
 bio.display();
-
 work.display(); // calls display function in work
-
 projects.display(); // calls display function in projects
+education.display();
 
-// to see the map
+// To see the map
 $("#mapDiv").append(googleMap);
 
-$(document).click(function(loc) {
-	console.log(loc.pageX, loc.pageY);
-});
