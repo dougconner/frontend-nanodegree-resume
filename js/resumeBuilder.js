@@ -94,46 +94,48 @@ var projects = {
 	    "dates":"3/1/2015",
 	    "description":"Creating a web page using HTML, CSS, and Bootstrap to match a PDF mockup.",
 	    "images": [
-	    	"http://tridev.dougsdiy.com/tridev/project_images/P1a.png"
+	    	"images/P1a.jpg"
 	    ]
 	  },
 	  {
 	    "title":"Stirling Engine Project",
-	    "url": "http://www.solarheatengines.com/"
+	    "url": "http://www.solarheatengines.com/",
 	    "dates":"2011-2013",
 	    "description":"Hobby blog of my Stirling engine projects",
 	    "images": [
-	    	"http://tridev.dougsdiy.com/tridev/project_images/dP2a.png",
-	    	"http://tridev.dougsdiy.com/tridev/project_images/dP2b.png"
+	    	"images/dP2a.jpg",
+	    	"images/dP2b.jpg"
 	    ]
 	  },
 	  {
 	    "title":"Triathlete group website",
-	    "url": "http://tritest.dougsdiy.com/"
+	    "url": "http://tritest.dougsdiy.com/",
 	    "dates":"2014-2015",
 	    "description":"King-of-the-Mountain mileage tracker",
 	    "images": [
-	    	"http://tridev.dougsdiy.com/tridev/project_images/dP3a.png"
+	    	"images/dP3a.jpg"
 	    ]
 	  }
 	],
 	"display": function display() {
-		for (var i = 0; i < projects.projects.length; i++)  {
+		for (var project in projects.projects)  {
 			$("#projects").append(HTMLprojectStart);
 			var formattedProjectTitle = HTMLprojectTitle.replace(
-				"%data%", projects.projects[i].title);
+				"%data%", projects.projects[project].title);
+			// replace "#" with the href
+			formattedProjectTitle = formattedProjectTitle.replace("#", projects.projects[project].url);
 			$(".project-entry:last").append(formattedProjectTitle);
 			var formattedProjectDates = HTMLprojectDates.replace(
-				"%data%", projects.projects[i].dates);
+				"%data%", projects.projects[project].dates);
 			$(".project-entry:last").append(formattedProjectDates);
 			var formattedProjectDescription = HTMLprojectDescription.replace(
-				"%data%", projects.projects[i].description);
+				"%data%", projects.projects[project].description);
 			$(".project-entry:last").append(formattedProjectDescription);
 			// need to add code to test for number of images and load all
-			if (projects.projects[i].images.length > 0) {
-				for(image in projects.projects[i].images) {
+			if (projects.projects[project].images.length > 0) {
+				for(image in projects.projects[project].images) {
 					var formattedProjectImage = HTMLprojectImage.replace("%data%",
-						projects.projects[i].images);
+						projects.projects[project].images[image]);
 					$(".project-entry:last").append(formattedProjectImage);
 				}
 			}
@@ -211,7 +213,7 @@ var education = {
 			"name": "Harvey Mudd College",
 			"location": "Claremont, CA",
 			"degree": "BS",
-			"major": "Engineering",
+			"major": ["Engineering"],
 			"dates": "1976",
 			"url": "https://www.hmc.edu/"
 		}
@@ -227,25 +229,25 @@ var education = {
 	  {
 	    "title":"Intro to HTML and CSS",
 	    "school":"Udacity",
-	    "dates":"Feb 2015",
+	    "dates":"2015",
 	    "url":"https://www.udacity.com/course/ud304"
 	  },
 	  {
 	    "title":"JavaScript basics",
 	    "school":"Udacity",
-	    "dates":"Mar 2015",
+	    "dates":"2015",
 	    "url":"https://www.udacity.com/course/ud804"
 	  },
 	  {
 	    "title":"How to use Git and GitHub",
 	    "school":"Udacity",
-	    "dates":"Mar 2015",
+	    "dates":"2015",
 	    "url":"https://www.udacity.com/course/ud775"
 	  },
 	  {
 	  	"title": "Intro to jQuery",
 	  	"school": "Udacity",
-	  	"dates": "Mar 2015",
+	  	"dates": "2015",
 	  	"url": "https://www.udacity.com/course/ud245"
 	  }
 	],
@@ -258,7 +260,6 @@ var education = {
 			var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
 			var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
 			var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
-			var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major);
 
 			// school name and degree are on a single line
 			var formattedSchoolTitle = formattedSchoolName + formattedSchoolDegree;
@@ -266,7 +267,10 @@ var education = {
 			$(".education-entry:last").append(formattedSchoolTitle);
 			$(".education-entry:last").append(formattedSchoolLocation);
 			$(".education-entry:last").append(formattedSchoolDates);
-			$(".education-entry:last").append(formattedSchoolMajor);
+			for (var i = 0; i < education.schools[school].major.length; i++) {
+				var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major[i]);
+				$(".education-entry:last").append(formattedSchoolMajor);
+			}
 
 		}
 		$(".education-entry").append(HTMLonlineClasses);
