@@ -158,7 +158,7 @@ function initializeMap() {
     var marker = new google.maps.Marker({
       map: map,
       position: placeData.geometry.location,
-      title: name
+      title: name,
     });
 
     // infoWindows are the little helper windows that open when you click

@@ -4,6 +4,7 @@
 var work = {
 	"jobs": [
 	  {
+	  	// "employer" changed to an array for inclusion of url
 	    "employer":["Self", "http://www.solarheatengines.com/"],
 	    "title":"Technical writing",
 	    "location":"Atascadero, CA",
@@ -99,6 +100,7 @@ var projects = {
 	  },
 	  {
 	    "title":"Stirling Engine Project",
+	    // added "url" property to contain url
 	    "url": "http://www.solarheatengines.com/",
 	    "dates":"2011-2013",
 	    "description":"Hobby blog of my Stirling engine projects",
