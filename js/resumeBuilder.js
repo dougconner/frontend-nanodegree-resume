@@ -159,13 +159,16 @@ var bio = {
 		"twitter" : "dhconner",
 		"location" : "Atascadero, CA"
 	},
-	"welcomeMsg" : "Web developer with technical writing and engineering background",
+	"welcomeMsg" : "Web developer with engineering and technical writing background",
 	"skills" : [
 		"HTML",
 		"CSS",
 		"JavaScript",
 		"jQuery",
-		"Technical Writing"
+		"PHP",
+		"Python",
+		"Technical Writing",
+		"Engineering analysis"
 	],
 	// biopic: url ?
 	"picture" : "images/me.jpg",
@@ -302,6 +305,59 @@ work.display(); // calls display function in work
 projects.display(); // calls display function in projects
 education.display();
 
+// TODO put the following in an object
 // To see the map
 $("#mapDiv").append(googleMap);
+
+// Initialize the following sections closed
+$(".work-entry").attr("style", 'display: none');
+$("#workImg").attr("src", "images/triangle2.png");
+
+$(".project-entry").attr("style", 'display: none');
+$("#projectsImg").attr("src", "images/triangle2.png");
+
+$(".education-entry").attr("style", 'display: none');
+$("#educationImg").attr("src", "images/triangle2.png");
+
+// toggle work section open/close
+$("#workImg" ).click(function() {
+	var src = $(this).attr("src");
+	if (src === "images/triangle2.png") {
+		// display work section
+		$(".work-entry").attr("style", 'display: true');
+		src = "images/triangle1.png";
+	} else {
+		$(".work-entry").attr("style", 'display: none');
+		src = "images/triangle2.png";
+	}
+	$(this).attr('src', src);
+});
+
+// toggle project section open/close
+$("#projectsImg" ).click(function() {
+	var src = $(this).attr("src");
+	if (src === "images/triangle2.png") {
+		// display project section
+		$(".project-entry").attr("style", 'display: true');
+		src = "images/triangle1.png";
+	} else {
+		$(".project-entry").attr("style", 'display: none');
+		src = "images/triangle2.png";
+	}
+	$(this).attr('src', src);
+});
+
+// toggle education section open/close
+$("#educationImg" ).click(function() {
+	var src = $(this).attr("src");
+	if (src === "images/triangle2.png") {
+		// display education section
+		$(".education-entry").attr("style", 'display: true');
+		src = "images/triangle1.png";
+	} else {
+		$(".education-entry").attr("style", 'display: none');
+		src = "images/triangle2.png";
+	}
+	$(this).attr('src', src);
+});
 
