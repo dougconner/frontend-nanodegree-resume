@@ -316,6 +316,9 @@ $(".work-entry").attr("style", 'display: none');
 $(".project-entry").attr("style", 'display: none');
 $(".education-entry").attr("style", 'display: none');
 
+// Leave this one open or it will not load properly
+$("#map").attr("style", 'display: true');
+
 // click on the head to open/close these sections
 $("#workExperience").find("h2").click(function() {
 	$(".work-entry").toggle();
