@@ -305,59 +305,32 @@ work.display(); // calls display function in work
 projects.display(); // calls display function in projects
 education.display();
 
-// TODO put the following in an object
+// TODO put all the following in an object
+// Remove triangle images
+
 // To see the map
 $("#mapDiv").append(googleMap);
 
 // Initialize the following sections closed
 $(".work-entry").attr("style", 'display: none');
-$("#workImg").attr("src", "images/triangle2.png");
-
 $(".project-entry").attr("style", 'display: none');
-$("#projectsImg").attr("src", "images/triangle2.png");
-
 $(".education-entry").attr("style", 'display: none');
-$("#educationImg").attr("src", "images/triangle2.png");
 
-// toggle work section open/close
-$("#workImg" ).click(function() {
-	var src = $(this).attr("src");
-	if (src === "images/triangle2.png") {
-		// display work section
-		$(".work-entry").attr("style", 'display: true');
-		src = "images/triangle1.png";
-	} else {
-		$(".work-entry").attr("style", 'display: none');
-		src = "images/triangle2.png";
-	}
-	$(this).attr('src', src);
+// click on the head to open/close these sections
+$("#workExperience").find("h2").click(function() {
+	$(".work-entry").toggle();
 });
 
-// toggle project section open/close
-$("#projectsImg" ).click(function() {
-	var src = $(this).attr("src");
-	if (src === "images/triangle2.png") {
-		// display project section
-		$(".project-entry").attr("style", 'display: true');
-		src = "images/triangle1.png";
-	} else {
-		$(".project-entry").attr("style", 'display: none');
-		src = "images/triangle2.png";
-	}
-	$(this).attr('src', src);
+$("#projects").find("h2").click(function() {
+	$(".project-entry").toggle();
 });
 
-// toggle education section open/close
-$("#educationImg" ).click(function() {
-	var src = $(this).attr("src");
-	if (src === "images/triangle2.png") {
-		// display education section
-		$(".education-entry").attr("style", 'display: true');
-		src = "images/triangle1.png";
-	} else {
-		$(".education-entry").attr("style", 'display: none');
-		src = "images/triangle2.png";
-	}
-	$(this).attr('src', src);
+$("#education").find("h2").click(function() {
+	$(".education-entry").toggle();
 });
+
+$("#mapDiv").find("h2").click(function() {
+	$("#map").toggle();
+});
+
 
