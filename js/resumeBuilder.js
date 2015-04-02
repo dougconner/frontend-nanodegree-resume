@@ -299,41 +299,45 @@ var education = {
 	}
 }
 
-// Call the display functions to load the resume data
-bio.display();
-work.display(); // calls display function in work
-projects.display(); // calls display function in projects
-education.display();
+// Append map and open/close main sections
+var navigation = {
+	display: function display() {
 
-// TODO put all the following in an object
-// Remove triangle images
+		// To see the map
+		$("#mapDiv").append(googleMap);
 
-// To see the map
-$("#mapDiv").append(googleMap);
+		// Initialize the following sections closed
+		$(".work-entry").attr("style", 'display: none');
+		$(".project-entry").attr("style", 'display: none');
+		$(".education-entry").attr("style", 'display: none');
 
-// Initialize the following sections closed
-$(".work-entry").attr("style", 'display: none');
-$(".project-entry").attr("style", 'display: none');
-$(".education-entry").attr("style", 'display: none');
+		// Leave this one open or it will not load properly
+		$("#map").attr("style", 'display: true');
 
-// Leave this one open or it will not load properly
-$("#map").attr("style", 'display: true');
+		// click on the section head to open/close these sections
+		$("#workExperience").find("h2").click(function() {
+			$(".work-entry").toggle();
+		});
 
-// click on the head to open/close these sections
-$("#workExperience").find("h2").click(function() {
-	$(".work-entry").toggle();
-});
+		$("#projects").find("h2").click(function() {
+			$(".project-entry").toggle();
+		});
 
-$("#projects").find("h2").click(function() {
-	$(".project-entry").toggle();
-});
+		$("#education").find("h2").click(function() {
+			$(".education-entry").toggle();
+		});
 
-$("#education").find("h2").click(function() {
-	$(".education-entry").toggle();
-});
+		$("#mapDiv").find("h2").click(function() {
+			$("#map").toggle();
+		});
+	}
+}
 
-$("#mapDiv").find("h2").click(function() {
-	$("#map").toggle();
-});
+// Call the display functions to load the resume
+bio.display();        // Contact info
+work.display();       // calls display function in work
+projects.display();   // calls display function in projects
+education.display();  //
+navigation.display(); // Adds map and section navigation
 
 
