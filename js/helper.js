@@ -13,7 +13,7 @@ These are HTML strings. As part of the course, you'll be using JavaScript functi
 replace the %data% placeholder text you see in them.
 */
 var HTMLheaderName = '<h1 id="name">%data%</h1>';
-var HTMLheaderRole = '<span>%data%</span><hr/>';
+var HTMLheaderRole = '<span class="role">%data%</span><hr/>';
 
 var HTMLcontactGeneric = '<li class="flex-item"><span class="orange-text">%contact%</span><span class="white-text">%data%</span></li>';
 var HTMLmobile = '<li class="flex-item"><span class="orange-text">mobile</span><span class="white-text">%data%</span></li>';
@@ -62,9 +62,17 @@ var googleMap = '<div id="map"></div>';
 /*
 The International Name challenge in Lesson 2 where you'll create a function that will need this helper code to run. Don't delete! It hooks up your code to the button you'll be appending.
 */
+function inName(nameIn) {
+  var nameArray = nameIn.trim().split(" ");
+  nameArray[1] = nameArray[1].toUpperCase();
+  nameArray[0] = nameArray[0].slice(0,1).toUpperCase() +
+    nameArray[0].slice(1).toLowerCase();
+  return nameArray.join(" ");
+}
+
 $(document).ready(function() {
   $('button').click(function() {
-    var iName = inName() || function() {};
+    var iName = inName($("#name").text()) || function() {};
     $('#name').html(iName);
   });
 });
@@ -158,14 +166,14 @@ function initializeMap() {
     var marker = new google.maps.Marker({
       map: map,
       position: placeData.geometry.location,
-      title: name,
+      title: name
     });
 
     // infoWindows are the little helper windows that open when you click
     // or hover over a pin on a map. They usually contain more information
     // about a location.
 
-    var mapMsg = marker.title + " lat-long " + marker.position;
+    var mapMsg = marker.title + ' lat-long ' + marker.position;
     var infoWindow = new google.maps.InfoWindow({
       // content: name
       content: mapMsg

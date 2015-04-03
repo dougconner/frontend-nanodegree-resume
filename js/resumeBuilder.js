@@ -290,7 +290,7 @@ var education = {
 
       $(".education-entry:last").append(formattedTitle);
       $(".education-entry:last").append(formattedOnlineDates);
-      // This is just for the <br> url in title link
+      // The following is just for the <br> url in title link
       $(".education-entry:last").append(formattedOnlineURL);
     }
   }
@@ -336,5 +336,4 @@ work.display();
 projects.display();
 education.display();
 navigation.display(); // Adds map and section navigation
-
 
