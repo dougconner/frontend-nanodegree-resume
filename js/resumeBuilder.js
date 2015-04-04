@@ -9,7 +9,7 @@ var work = {
       'title': 'Technical writing',
       'location': 'Atascadero, CA, USA',
       'dates': '1997 - present',
-      'description': 'Tecnical writing for electronics companies appearing in magazines and websites. Database programming using Microsoft Access. '
+      'description': 'Technical writing for electronics companies appearing in magazines and websites. Database programming using Microsoft Access. '
     },
     {
       'employer': ['Actel (now Microsemi)', 'http://www.microsemi.com/'],
@@ -42,7 +42,7 @@ var work = {
       'location': 'Thousand Oaks, CA, USA',
       'dates': '1979-1983',
       'description': 'Wrote computer programs to evaluate rocket launch dynamics and aerodynamic performance. ' +
-        'Worked on softaware requirements document for autonomous unmanned aircraft. Secret clearance.  '
+        'Worked on software requirements document for autonomous unmanned aircraft. Secret clearance.  '
     },
     {
       'employer': ['Conner Construction', ''],
