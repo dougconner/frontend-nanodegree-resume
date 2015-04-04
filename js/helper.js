@@ -112,7 +112,7 @@ Start here! initializeMap() is called when page is loaded.
 */
 function initializeMap() {
 
-  var locations;
+  var locationData;
 
   var mapOptions = {
     disableDefaultUI: true
@@ -128,25 +128,30 @@ function initializeMap() {
   */
   function locationFinder() {
 
-    // initializes an empty array
-    var locations = [];
+    // initializes an empty array that will contain a set of two-element arrays
+    // the first element is the location information
+    // the second element contains infoWindow text
+    var locationData = [];
 
     // adds the single location property from bio to the locations array
-    locations.push(bio.contacts.location);
+    locationData.push([bio.contacts.location, ", I live here."]);
 
     // iterates through school locations and appends each location to
     // the locations array
+    // adds aditional
     for (var school in education.schools) {
-      locations.push(education.schools[school].location);
+      locationData.push([education.schools[school].location,
+        education.schools[school].name + ", I went to school here."]);
     }
 
     // iterates through work locations and appends each location to
     // the locations array
     for (var job in work.jobs) {
-      locations.push(work.jobs[job].location);
+      locationData.push([work.jobs[job].location,
+        work.jobs[job].employer[0] + ", I've worked here."]);
     }
 
-    return locations;
+    return locationData;
   }
 
   /*
@@ -171,9 +176,17 @@ function initializeMap() {
 
     // infoWindows are the little helper windows that open when you click
     // or hover over a pin on a map. They usually contain more information
-    // about a location.
+    // about a location
 
-    var mapMsg = marker.title + ' latitude = ' + lat + ',' + ' longitude = ' + lon;
+    // compare marker title with locationData city, state.
+    // for all matches (could be more than one) add info to mapMsg
+    var mapMsg = mapMsg = marker.title + ' latitude = ' + lat + ',' + ' longitude = ' + lon + ', ';
+    for (var i = 0; i < locationData.length; i++) {
+      if (marker.title === locationData[i][0]) {
+        mapMsg = mapMsg + ' ' + locationData[i][1];
+      }
+    }
+
     var infoWindow = new google.maps.InfoWindow({
       // content: name
       content: mapMsg
@@ -211,18 +224,18 @@ function initializeMap() {
   pinPoster(locations) takes in the array of locations created by locationFinder()
   and fires off Google place searches for each location
   */
-  function pinPoster(locations) {
+  function pinPoster(locationData) {
 
     // creates a Google place search service object. PlacesService does the work of
     // actually searching for location data.
     var service = new google.maps.places.PlacesService(map);
 
     // Iterates through the array of locations, creates a search object for each location
-    for (var place in locations) {
+    for (var i = 0; i < locationData.length; i++) {
 
       // the search request object
       var request = {
-        query: locations[place]
+        query: locationData[i][0] // [i][0] contains the city, state
       };
 
       // Actually searches the Google Maps API for location data and runs the callback
@@ -235,14 +248,11 @@ function initializeMap() {
   window.mapBounds = new google.maps.LatLngBounds();
 
   // locations is an array of location strings returned from locationFinder()
-  locations = locationFinder();
-  for (var i = 0; i < locations.length; i++) {
-    console.log(locations[i]);
-  }
+  locationData = locationFinder();
 
   // pinPoster(locations) creates pins on the map for each location in
   // the locations array
-  pinPoster(locations);
+  pinPoster(locationData);
 }
 
 /*
