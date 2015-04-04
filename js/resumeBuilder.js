@@ -39,7 +39,7 @@ var work = {
     {
       'employer': ['Northrop (now Northrop-Grumman)', 'http://www.northropgrumman.com/'],
       'title': 'Senior Engineer, engineering analysis group',
-      'location': 'Thousand Oaks, CA',
+      'location': 'Thousand Oaks, CA, USA',
       'dates': '1979-1983',
       'description': 'Wrote computer programs to evaluate rocket launch dynamics and aerodynamic performance. ' +
         'Worked on softaware requirements document for autonomous unmanned aircraft. Secret clearance.  '

@@ -105,8 +105,6 @@ See the documentation below for more details.
 https://developers.google.com/maps/documentation/javascript/reference
 */
 var map;    // declares a global map variable
-
-
 /*
 Start here! initializeMap() is called when page is loaded.
 */
@@ -178,8 +176,9 @@ function initializeMap() {
     // or hover over a pin on a map. They usually contain more information
     // about a location
 
-    // compare marker title with locationData city, state.
+    // compare marker title with locationData
     // for all matches (could be more than one) add info to mapMsg
+
     var mapMsg = mapMsg = marker.title + ' latitude = ' + lat + ',' + ' longitude = ' + lon + ', ';
     for (var i = 0; i < locationData.length; i++) {
       if (marker.title === locationData[i][0]) {
@@ -188,17 +187,13 @@ function initializeMap() {
     }
 
     var infoWindow = new google.maps.InfoWindow({
-      // content: name
       content: mapMsg
     });
 
     // hmmmm, I wonder what this is about...
     google.maps.event.addListener(marker, 'click', function() {
-      // your code goes here!
       var position = infoWindow.getPosition();
       infoWindow.open(map, marker);
-      marker.setMap(null); // removes marker from display
-      marker.setMap(map);  // shows marker again
     });
 
     // this is where the pin actually gets added to the map.
