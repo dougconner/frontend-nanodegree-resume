@@ -173,7 +173,7 @@ function initializeMap() {
     // or hover over a pin on a map. They usually contain more information
     // about a location.
 
-    var mapMsg = marker.title + ' lat-long ' + marker.position;
+    var mapMsg = marker.title + ' latitude = ' + lat + ',' + ' longitude = ' + lon;
     var infoWindow = new google.maps.InfoWindow({
       // content: name
       content: mapMsg
@@ -184,6 +184,8 @@ function initializeMap() {
       // your code goes here!
       var position = infoWindow.getPosition();
       infoWindow.open(map, marker);
+      marker.setMap(null); // removes marker from display
+      marker.setMap(map);  // shows marker again
     });
 
     // this is where the pin actually gets added to the map.
@@ -234,11 +236,13 @@ function initializeMap() {
 
   // locations is an array of location strings returned from locationFinder()
   locations = locationFinder();
+  for (var i = 0; i < locations.length; i++) {
+    console.log(locations[i]);
+  }
 
   // pinPoster(locations) creates pins on the map for each location in
   // the locations array
   pinPoster(locations);
-
 }
 
 /*
