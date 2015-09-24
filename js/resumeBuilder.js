@@ -23,8 +23,8 @@ var work = {
       'title': 'Technical editor',
       'location': 'Newton, MA, USA',
       'dates': '1987-1996',
-      'description': 'Covered programmable logic and EDA tool in application-oriented articles. Performed hands-on projects ' +
-        'projects I regularly learned to use a variety of new design tools and software. Some of the projects included ' +
+      'description': 'Covered programmable logic and EDA tool in application-oriented articles. Performing hands-on projects ' +
+        'I regularly learned to use a variety of new design tools and software. Some of the projects included ' +
         'implementing digital filters with FPGAs, computer-simulated neural networks, and evaluating schematic capture and ' +
         'pc-board layout software. '
     },
@@ -113,7 +113,7 @@ var projects = {
       'title': 'Triathlete group website',
       'url': 'http://tritest.dougsdiy.com/',
       'dates': '2014-2015',
-      'description': 'King-of-the-Mountain mileage tracker',
+      'description': 'Leaderboard mileage tracker',
       'images': [
         'images/dP3a.jpg'
       ]
