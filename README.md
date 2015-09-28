@@ -1,3 +1,16 @@
+## Interactive Resume Project
+The second project in the Front-end Web Developer Nanodegree. You can click on the following resume headings to show or hide more information:
+Work Experience
+Projects
+Education
+Where I've Lived and Worked
+
+Clicking on the map markers provides additional information.
+
+This was an early project. I do not keep this resume up-to-date.
+
+I've left the original project directions below:
+
 ## How do I complete this project?
 
 1. Go to the [Javascript Basics course](https://www.udacity.com/course/ud804) and select "View Course Materials."
@@ -16,7 +29,7 @@ And your repository will include the following files:
 * **js/resumeBuilder.js**: This file is empty. You should write your code here.
 * **js/jQuery.js**: The jQuery library.
 * **css/style.css**: Contains all of the CSS needed to style the page.
-* **README.md**: 
+* **README.md**:
 The GitHub readme file.
 * and some images in the images directory.
 
@@ -32,22 +45,22 @@ The resume has four distinct sections: work, education, projects and a header wi
 1. Build four JSONs, each one representing a different resume section. The objects that you create need to follow the names within the schema below exactly. Make sure your JSONs are formatted correctly using <a href="http://jsonlint.com/" target="_blank">JSONlint.com</a>.
 
 * `bio` contains:
-        
+
             name : string
             role : string
             contacts : an object with
                   mobile: string
-                  email: string 
+                  email: string
                   github: string
-                  twitter: string 
+                  twitter: string
                   location: string
-            welcomeMessage: string 
+            welcomeMessage: string
             skills: array of strings
             biopic: url
             display: function taking no parameters
 
 * `education` contains:
-      
+
             schools: array of objects with
                  name: string
                  location: string
@@ -63,19 +76,19 @@ The resume has four distinct sections: work, education, projects and a header wi
             display: function taking no parameters
 
 * `work` contains
-          
+
             jobs: array of objects with
-                 employer: string 
-                 title: string 
-                 location: string 
+                 employer: string
+                 title: string
+                 location: string
                  dates: string (works with a hyphen between them)
-                 description: string 
+                 description: string
             display: function taking no parameters
 
 * `projects` contains:
 
             projects: array of objects with
-                  title: string 
+                  title: string
                   dates: string (works with a hyphen between them)
                   description: string
                   images: array with string urls
