@@ -1,5 +1,6 @@
 ## Interactive Resume Project
 The second project in the Front-end Web Developer Nanodegree. You can click on the following resume headings to show or hide more information:
+
 Work Experience
 Projects
 Education
