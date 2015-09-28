@@ -164,8 +164,6 @@ var bio = {
     'CSS',
     'JavaScript',
     'jQuery',
-    'PHP',
-    'Python',
     'Technical Writing',
     'Engineering analysis'
   ],
